@@ -1,0 +1,36 @@
+<html>
+    {%load static%}
+    <head>
+        <title>pendinglist</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div class="pendingpage">
+            <center>
+                <h1>Pending List</h1>
+                <table border="5%">
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for i in value %}
+                    <tr>
+                        <td>{{i.Name}}</td>
+                        <td>{{i.Address}}</td>
+                        <td>{{i.Username}}</td>
+                        <td>{{i.Password}}</td>
+                        <td>{{i.Status}}</td>
+                        <td>
+                            <a href="/firstapp/approve/{{i.id}}">Approve</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </center>
+        </div>
+    </body>
+</html>
