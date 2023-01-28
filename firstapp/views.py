@@ -3,6 +3,9 @@ from firstapp.models import registerdetails
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'firstapp/index.html')
+
 def registerpage(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -10,17 +13,23 @@ def registerpage(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         users = registerdetails()
-        users.Name = name
-        users.Address = address
-        users.Username = username
-        users.Password = password
-        users.save()
+        if len(name) == 0 or len(address) == 0 or len(username) == 0 or len(password) == 0:
+            return HttpResponse('Please fill the feilds')
+        else:
+            users.Name = name
+            users.Address = address
+            users.Username = username
+            users.Password = password
+            users.save()
+            return redirect('/firstapp/userlog')
     return render(request, 'firstapp/register.html')
 
 def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        if len(username) == 0 or len(password) == 0:
+            return HttpResponse('Please enter the valid details')
         try:
             registerdetails.objects.get(Username=username)
             return HttpResponse('welcome user')
@@ -29,12 +38,15 @@ def userlogin(request):
             return HttpResponse('Invalid user')
     return render(request, 'firstapp/login.html')
 
+def adminhome(request):
+    return render(request, 'firstapp/adminhome.html')
+
 def adminlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         if username == 'admin' and password == 'admin':
-            return HttpResponse('Welcome Admin')
+            return redirect('/firstapp/adminhome')
         else:
             return HttpResponse('Invalid')
     return render(request, 'firstapp/adminlogin.html')

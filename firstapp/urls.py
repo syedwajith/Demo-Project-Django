@@ -17,8 +17,10 @@ from django.urls import path
 from firstapp import views
 
 urlpatterns = [
+    path('index/',views.index),
     path('reg/',views.registerpage),
     path('userlog/',views.userlogin,),
+    path('adminhome/', views.adminhome),
     path('adminlog/',views.adminlogin,),
     path('pending/',views.pending,),
     path('approved/',views.approved,),

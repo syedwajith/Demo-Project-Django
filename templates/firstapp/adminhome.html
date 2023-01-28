@@ -1,0 +1,23 @@
+<html>
+    {%load static%}
+    <head>
+        <title>adminpage</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Admin Home</h1>
+        <a href="/firstapp/approved">
+            <button>Approved List</button>
+        </a>
+        <br>
+        <br>
+        <a href="/firstapp/pending">
+            <button>Pending List</button>
+        </a>
+        <br>
+        <br>
+        <a href="/firstapp/index">
+            <button>Logout</button>
+        </a>
+    </body>
+</html>
