@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(aqua,blue);
+}
+
+input[type="button"],input[type="submit"]
+{
+    cursor: pointer;
+}
+th {
+    padding: 10px;
+    font-size: 18px;
+}
+td {
+    padding: 5px;
+    font-size: 15px;
+}
+td a {
+    color: red;
+    font-weight: bold;
+}
